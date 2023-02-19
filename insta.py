@@ -29,3 +29,34 @@ for file in files_txt:
 files_txt = [x for x in os.listdir('./{}'.format(profileID)) if x.endswith(".mp4")]
 for file in files_txt:
     print(file)
+    
+#  extracting vidos files and storing in videos folder
+files = os.listdir('./{}/'.format(profileid))
+files = [file for file in files if file.endswith(".mp4")]
+if 'videos' in os.listdir('./{}/'.format(profileid)):
+    print('Dir is already present')
+else:
+    os.mkdir('./{}/videos/'.format(profileid))
+    print('Video folder created.')
+    
+print("Moving Files to videos dir")
+for file in files:
+    if not file in os.listdir('./{}/videos/'.format(profileid)):
+        os.replace('./{}/'.format(profileid) + file,'./{}/videos/'.format(profileid) + file)
+print('Completed')
+
+
+# extracting text files and storing in textx folder
+files = os.listdir('./{}/'.format(profileid))
+files = [file for file in files if file.endswith(".txt")]
+if 'texts' in os.listdir('./{}/'.format(profileid)):
+    print('Dir is already present')
+else:
+    os.mkdir('./{}/texts/'.format(profileid))
+    print('texts folder created.')
+    
+print("Moving Files to texts dir")
+for file in files:
+    if not file in os.listdir('./{}/texts/'.format(profileid)):
+        os.replace('./{}/'.format(profileid) + file,'./{}/texts/'.format(profileid) + file)
+print('Completed')
